@@ -1,0 +1,9 @@
+ <div class="nav" ng-controller="AuthController as auth">
+  <ul>
+    <li><a ng-href="#!/events" target="_self">My events</a></li>
+    <li><a ng-href='#!/tasks' target="_self">My Tasks</a></li>
+    <li class="auth" ng-show="auth.signedIn"><a>Sign out</a></li>
+    <li class="auth" ng-hide="auth.signedIn"><a href='#!/signup'>Sign up</a></li>
+    <li class="auth" ng-hide="auth.signedIn"><a href='#!/signin'>Sign in</a></li>
+  </ul>
+</div>

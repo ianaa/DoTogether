@@ -26,10 +26,5 @@ angular.module("app", [
       controller: 'AuthController',
       authenticate: false
     })
-    .when('/signout',{
-      templateUrl: 'app/auth/signout.html',
-      controller: 'AuthController',
-      authenticate: false
-    })
     .otherwise('/events')
 });

@@ -1,4 +1,4 @@
-angular.module('app.events', [])
+angular.module('app.events', ['app.auth'])
 .controller("EventsController", function(){
-  
+
 })
