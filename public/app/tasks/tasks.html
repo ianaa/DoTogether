@@ -1,0 +1,14 @@
+<div class="nav" ng-controller="AuthController as auth">
+  <ul>
+    <li><a>My events</a></li>
+    <li><a>My Tasks</a></li>
+    <li class="auth" ng-show="auth.signedIn"><a>Sign out</a></li>
+    <li class="auth" ng-hide="auth.signedIn"><a>Sign up</a></li>
+    <li class="auth" ng-hide="auth.signedIn"><a>Sign in</a></li>
+  </ul>
+</div>
+<div>
+  <form>
+  <input type="text" ng-model="add" placeholder="...add a task">
+  </form>
+</div>

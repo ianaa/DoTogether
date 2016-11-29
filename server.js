@@ -16,5 +16,5 @@ app.post('/', (req, res) => {
 });
 
 app.listen(PORT, function(){
-  console.log(`PartyShare server listening on port ${PORT}!`)
+  console.log(`DoTogether server listening on port ${PORT}!`)
 });
