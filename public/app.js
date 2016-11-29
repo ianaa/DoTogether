@@ -8,7 +8,7 @@ angular.module("app", [
   $routeProvider
     .when('/events', {
       templateUrl: 'app/events/events.html',
-      controller: 'EventsController',
+      controller: 'EventsController as events',
       authenticate: false
     })
     .when('/tasks', {

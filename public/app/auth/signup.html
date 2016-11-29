@@ -2,9 +2,12 @@
 <div>
   <h2></h2>
   <form name="signinForm" ng-submit="">
-  <input type="text" ng-model="">
-  <input type="password" ng-model="">
-  <input type="password" ng-model="">
+    Create username: <br>
+    <input type="text" ng-model="user.username" required>
+    Create password: <br>
+    <input type="password" ng-model="user.password" required>
+    Repeat password: <br>
+    <input type="password" ng-model="user.repeatPassword" required>
   </form>
   <a href="#!/signin">If you already have an account, please <strong>sign in</strong></a>
 </div>
