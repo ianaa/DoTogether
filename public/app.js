@@ -27,5 +27,5 @@ angular.module("app", [
       controller: 'AuthController',
       authenticate: false
     })
-    .otherwise('/events')
+    .otherwise('/events');
 });

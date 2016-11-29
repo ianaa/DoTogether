@@ -5,15 +5,15 @@ angular.module('app.events', [])
     date: null,
     tasks: []
   };
-  this.eventList = [ { name: "AfterCumulative Party",
-                       date: "Dec 03, 2016",
-                       tasks: [{done: false, claimedBy: null, todo: "bring beer"},
-                               {done: false, claimedBy: null, todo: "bring chips"}]  } ];
+  this.eventList = [];
 
   this.addEvent = function() {
-    Eventsfactory.addNew(this.new)
+    EventsFactory.addNew(this.new)
     .then((res)=>{
-      console.log(res);
+      var newEvent = JSON.parse(JSON.stringify(this.new));
+      this.eventList.push(newEvent);
+      this.new.name = '';
+
     })
   };
   this.getEvents = function() {

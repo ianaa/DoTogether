@@ -4,8 +4,9 @@ angular.module('app.services', [])
     return $http({
       method: 'GET',
       url: '/api/events'
-    }).then((res) =>{
-        return res.data;
+    }).then((res) => {
+      console.log(res.data);
+      return res.data;
     }, (res) =>{
       console.log("ERROR", res);
     });
@@ -16,11 +17,15 @@ angular.module('app.services', [])
       url: 'api/events',
       data: event,
       contentType: 'application/json'
-    }).then((res) =>{
-        return res;
+    }).then((res) => {
+      console.log(res.data);
+      return res.data;
     }, (res) =>{
       console.log("ERROR", res);
     });
+  };
+  var addTask = function(task) {
+    
   }
   return {
     getAll: getAll,
