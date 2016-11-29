@@ -3,18 +3,24 @@ var parser = require('body-parser');
 var path = require('path');
 var mongoose = require ('mongoose');
 
+
 var app = express();
 var PORT = process.env.PORT || 3000;
 
 app.use(express.static(path.join(__dirname, '/public')));
 
-app.get('/', (req, res) => {
-  res.send("GET request to the homepage");
-});
-app.post('/', (req, res) => {
-  res.send("POST request to the homepage");
-});
+require('./routes/routes.js')(app,express);
 
-app.listen(PORT, function(){
-  console.log(`DoTogether server listening on port ${PORT}!`)
-});
+mongoose.connect('mongodb://iana:todo@ds115798.mlab.com:15798/dotogether');
+var db = mongoose.connection;
+
+db.on('error', (err) => {
+  console.error("db connection error:", err);
+})
+
+db.once('open', function() {
+  console.log('MongoDB connected');
+  app.listen(PORT, function(){
+    console.log(`DoTogether server listening on port ${PORT}!`)
+  });
+})

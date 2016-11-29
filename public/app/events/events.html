@@ -1,12 +1,15 @@
 <nav-bar></nav-bar>
 <div>
-  <form ng-submit='events.addEvent()'>
-  Create an event: <br>
-  <input type="text" ng-model="events.new.name" placeholder="...add an event" required>
-  Add a date or a deadline: <br>
-  <input type="date" ng-model="events.new.date" required>
-  <input type="submit" value="Add event">
+
+  <form name="addEventForm" ng-submit='events.addEvent()'>
+    Create an event: <br>
+    <input type="text" ng-model="events.new.name" placeholder="...add an event" required>
+
+    Add a date or a deadline: <br>
+    <input type="date" ng-model="events.new.date" required>
+    <input type="submit" value="Add event">
   </form>
+
   <div id="event-list">
     <ul class="event" ng-repeat="event in events.eventList | orderBy: 'date'">
       <li>{{event.name}} <span>{{event.date.toDateString()}}</span>
@@ -16,4 +19,5 @@
       </li>
     </ul>
   </div>
+  
 </div>

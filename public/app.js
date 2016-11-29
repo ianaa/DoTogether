@@ -2,6 +2,7 @@ angular.module("app", [
   'app.auth',
   'app.events',
   'app.tasks',
+  'app.services',
   'ngRoute'
   ])
 .config(function($routeProvider){

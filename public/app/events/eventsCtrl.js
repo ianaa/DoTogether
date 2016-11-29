@@ -1,5 +1,5 @@
-angular.module('app.events', ['app.auth'])
-.controller("EventsController", function(){
+angular.module('app.events', [])
+.controller("EventsController", function(EventsFactory){
   this.new = {
     name: null,
     date: null,
@@ -9,7 +9,18 @@ angular.module('app.events', ['app.auth'])
                        date: "Dec 03, 2016",
                        tasks: [{done: false, claimedBy: null, todo: "bring beer"},
                                {done: false, claimedBy: null, todo: "bring chips"}]  } ];
-  this.addEvent = function () {
-    this.eventList.push(this.new);
+
+  this.addEvent = function() {
+    Eventsfactory.addNew(this.new)
+    .then((res)=>{
+      console.log(res);
+    })
+  };
+  this.getEvents = function() {
+    EventsFactory.getAll()
+    .then((data) => {
+      this.eventList = data;
+    })
   }
+  this.getEvents();
 })
