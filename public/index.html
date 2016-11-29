@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='app'>
+  <head>
+    <meta charset="utf-8">
+    <title>DoTogether</title>
+    
+    <link href="styles/styles.css" rel="stylesheet">
+  </head>
+  <body>
+    <h1>DoTogether</h1>
+    <div class="nav" ng-controller="AuthController as auth">
+      <ul>
+        <li><a href="#/add">Add event</a></li>
+        <li><a>My events</a></li>
+        <li><a>My Tasks</a></li>
+        <li class="auth" ng-show="auth.signedIn"><a>Sign out</a></li>
+        <li class="auth" ng-hide="auth.signedIn"><a>Sign up</a></li>
+        <li class="auth" ng-hide="auth.signedIn"><a>Sign in</a></li>
+      </ul>
+    </div>
+
+    <div ng-view></div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0-rc.2/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0-rc.2/angular-route.js"></script>
+
+    <script src="../app.js"></script>
+    <script src="app/auth/authCtrl.js"></script>
+    <script src="app/events/eventsCtrl.js"></script>
+    <script src="app/add/addCtrl.js"></script>
+    <script src="app/tasks/tasksCtrl.js"></script>
+  </body>
+</html>
