@@ -19,7 +19,7 @@
           <ul class="task" ng-repeat="task in event.tasks | filter: {done: false} | limitTo: 3 track by $index">
               <li>{{task.todo}}</li>
           </ul>
-          <p ng-click="events.zoomIn(event)">...view all or add more</p>
+          <p ng-click="events.zoomIn(event)">...more</p>
       </li>
     </ul>
   </div>

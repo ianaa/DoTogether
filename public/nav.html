@@ -1,5 +1,6 @@
  <div class="nav" ng-controller="AuthController as auth">
   <ul>
+    <li><a><strong>Hello, {{auth.user}}!</strong></a></li>
     <li><a ng-href="#!/events" target="_self">My events</a></li>
     <li><a ng-href='#!/tasks' target="_self">My Tasks</a></li>
     <li class="auth" ng-show="auth.signedIn"><a>Sign out</a></li>

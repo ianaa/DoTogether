@@ -1,5 +1,6 @@
 angular.module('app.events', [])
-.controller("EventsController", function(EventsFactory, $location){
+.controller("EventsController", function(EventsFactory, $location, $window){
+  this.user = $window.user;
   this.new = {
     name: null,
     date: null,
@@ -32,26 +33,25 @@ angular.module('app.events', [])
       this.eventList.splice(index, 1);
     })
   };
-  this.addTask = function() {
-    EventsFactory.changeTask('add', this.curr, this.newTask)
+  this.editTask = function(editParam, task){
+    EventsFactory.changeTask(editParam, this.curr, task)
     .then((data) => {
       this.curr.tasks = data;
-      this.newTask = '';
     })
+  }
+  this.addTask = function() {
+    this.editTask('add', this.newTask);
+    this.newTask = '';
   };
   this.removeTask = function(task) {
-    EventsFactory.changeTask('remove', this.curr, task)
-    .then((data) => {
-      console.log(data);
-      this.curr.tasks = data;
-    })
+    this.editTask('remove', task);
+  };
+  this.claimTask = function(task) {
+    task.claimedBy = $window.user;
+    this.editTask('claim', task);
   };
   this.toggleDone = function(task) {
-    EventsFactory.changeTask('done', this.curr, task)
-    .then((data) => {
-      console.log(data);
-      this.curr.tasks = data;
-    })
+    this.editTask('done', task);
   }
 
   this.getEvents();

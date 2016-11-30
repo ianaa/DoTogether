@@ -7,8 +7,8 @@
       <li>
       <span><input type="checkbox" ng-model="task.done" ng-checked="task.done" ng-change="events.toggleDone(task)"></span>
       <span>{{task.todo}}</span><span><button ng-click="events.removeTask(task)">X</button></span>
-      <span ng-show="task.claimedBy">{{task.claimedBy}} gonna take care of this!</span>
-      <span><button ng-hide="task.claimedBy" ng-click="">Claim</button><span>
+      <span ng-show="task.claimedBy"><strong>{{task.claimedBy}}</strong> will take care of this!</span>
+      <span><button ng-hide="task.claimedBy" ng-click="events.claimTask(task)">Claim</button><span>
       </li>
     </ul>
 

@@ -9,6 +9,13 @@ var taskUpdator = function(event, res){
       console.error(err);
     });
 };
+var taskParser = function(req, res) {
+  return {
+    event: req.body.event,
+    task: req.body.task,
+    index: req.body.event.tasks.map((item)=>item.todo).indexOf(req.body.task.todo)
+  }
+}
 var taskActions = {
   'add': function(req, res){
     var event = req.body.event;
@@ -17,18 +24,19 @@ var taskActions = {
     taskUpdator(event, res);
   },
   'remove': function(req, res) {
-    var event = req.body.event;
-    var task = req.body.task;
-    var index = event.tasks.map((item)=>item.todo).indexOf(task.todo);
-    event.tasks.splice(index, 1);
-    taskUpdator(event, res);
+    thing = taskParser(req, res);
+    thing.event.tasks.splice(thing.index, 1);
+    taskUpdator(thing.event, res);
   },
   'done': function(req, res) {
-    var event = req.body.event;
-    var task = req.body.task;
-    var index = event.tasks.map((item)=>item.todo).indexOf(task.todo);
-    event.tasks[index].done = task.done;
-    taskUpdator(event, res);
+    thing = taskParser(req, res);
+    thing.event.tasks[thing.index].done = thing.task.done;
+    taskUpdator(thing.event, res);
+  },
+  'claim': function(req, res) {
+    thing = taskParser(req, res);
+    thing.event.tasks[thing.index].claimedBy = thing.task.claimedBy;
+    taskUpdator(thing.event, res);
   }
 }
 

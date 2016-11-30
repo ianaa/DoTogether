@@ -5,6 +5,9 @@ angular.module("app", [
   'app.services',
   'ngRoute'
   ])
+.run(function($window){
+  $window.user = prompt("Please introduce yourself") || 'guest';
+})
 .config(function($routeProvider){
   $routeProvider
     .when('/events', {

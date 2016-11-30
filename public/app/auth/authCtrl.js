@@ -1,5 +1,6 @@
 angular.module('app.auth', [])
-  .controller("AuthController", function () {
+  .controller("AuthController", function ($window) {
+    this.user = $window.user;
     this.signedIn = false;
   })
   .directive('navBar', function() {
