@@ -1,4 +1,4 @@
-//require q - promisify stuff
+
 var Event = require('./EventModel.js');
   
 module.exports = {
@@ -18,12 +18,15 @@ module.exports = {
   addTaskToEvent: function(req, res) {
     var event = req.body.event;
     var task = {claimedBy: null, done: false, todo: req.body.task};
-    console.log(task);
     event.tasks.push(task);
-    var result;
-    Event.findOneAndUpdate({_id: event._id}, {$set: {tasks: event.tasks}}, (res) => {
-      result = res;
+    console.log("TASKS", event.tasks)
+    Event.findOneAndUpdate({_id: event._id}, {tasks: event.tasks}).exec()
+    .then((data) =>{
+      //console.log("Response from db", data);
+      res.send(event.tasks);
+    })
+    .catch((err) =>{
+      console.error(err);
     });
-    res.send(result);
   }
 }

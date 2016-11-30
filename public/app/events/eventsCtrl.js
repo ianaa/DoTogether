@@ -25,10 +25,10 @@ angular.module('app.events', [])
     $location.path('/zoomin');
   };
   this.addTask = function() {
-    console.log("called")
     EventsFactory.addToEvent(this.curr, this.newTask)
     .then((res) => {
-      this.curr.tasks.push(res);
+      console.log("Response", res)
+      this.curr.tasks = res;
       this.newTask = '';
     })
   };

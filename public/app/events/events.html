@@ -11,11 +11,12 @@
   </form>
 
   <div id="event-list">
-    <ul class="event" ng-repeat="event in events.eventList | orderBy: 'date'">
+    <ul class="event" ng-repeat="event in events.eventList | orderBy: 'date' track by $index">
       <li>
         <a ng-click="events.zoomIn(event)">{{event.name}}</a> 
-        <span>{{event.date.substring(0, 10)}}</span>
-          <ul class="task" ng-repeat="task in event.tasks">
+        <span>{{event.date.substring(0, 10)}}</span> 
+        <span><button ng-click="">Delete</button></span>
+          <ul class="task" ng-repeat="task in event.tasks track by $index">
               <li>{{task.todo}}</li>
           </ul>
       </li>

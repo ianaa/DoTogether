@@ -3,16 +3,15 @@
 <div>
   <h3>{{events.curr.name}}</h3> 
     <span>{{events.curr.date.substring(0, 10)}}</span>
-    <ul class="task" ng-repeat="task in event.curr.tasks">
+    <ul  ng-repeat="task in events.curr.tasks track by $index">
       <li>
-      <p>{{task.todo}}</p>
-      <span ng-show="task.claimed">{{task.claimed}} gonna take take of this!</span>
-      <span><button ng-hide="task.claimed" ng-click="">Claim</button><span>
+      <span>{{task.todo}}</span>
+      <span ng-show="task.claimedBy">{{task.claimedBy}} gonna take take of this!</span>
+      <span><button ng-hide="task.claimedBy" ng-click="">Claim</button><span>
       </li>
     </ul>
 
     <form ng-submit="events.addTask()">
-      {{events.curr.tasks}}
       <input type="text" ng-model="events.newTask" placeholder="...add new tasks here">
     </form>
 </div>

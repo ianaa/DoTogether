@@ -32,7 +32,7 @@ angular.module('app.services', [])
       data: {event: event, task: task},
       contentType: 'application/json'
     }).then((res) => {
-      console.log(res.data);
+      console.log("response in the factory", res.data);
       return res.data;
     }, (res) => {
       console.log("ERROR", res);
