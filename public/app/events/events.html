@@ -16,6 +16,7 @@
         <a ng-click="events.zoomIn(event)">{{event.name}}</a>
         <span>{{event.date.substring(0, 10)}}</span>
         <span><button ng-click="events.removeEvent(event)">Delete</button></span>
+        <span><button ng-click="events.shareEvent(event)">Invite</button></span>
           <ul class="task" ng-repeat="task in event.tasks | filter: {done: false} | limitTo: 3 track by $index">
               <li>{{task.todo}}</li>
           </ul>
