@@ -1,5 +1,6 @@
 angular.module('app.services', [])
-.factory('EventsFactory', function($http) {
+.factory('EventsFactory', function($http, $location) {
+  var currentEvent = "nothing for now";
   var getAll = function() {
     return $http({
       method: 'GET',
@@ -24,11 +25,9 @@ angular.module('app.services', [])
       console.log("ERROR", res);
     });
   };
-  var addTask = function(task) {
-    
-  }
   return {
     getAll: getAll,
-    addNew: addNew
+    addNew: addNew,
+    currentEvent: currentEvent
   }
 })

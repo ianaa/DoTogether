@@ -1,12 +1,12 @@
 angular.module('app.events', [])
-.controller("EventsController", function(EventsFactory){
+.controller("EventsController", function(EventsFactory, $location){
   this.new = {
     name: null,
     date: null,
     tasks: []
   };
   this.eventList = [];
-
+  this.curr = EventsFactory.currentEvent;
   this.addEvent = function() {
     EventsFactory.addNew(this.new)
     .then((res)=>{
@@ -21,6 +21,11 @@ angular.module('app.events', [])
     .then((data) => {
       this.eventList = data;
     })
-  }
+  };
+  this.zoomIn = function(event) {
+    EventsFactory.currentEvent = event;
+    $location.path('/zoomin');
+  };
+
   this.getEvents();
 })

@@ -12,7 +12,9 @@
 
   <div id="event-list">
     <ul class="event" ng-repeat="event in events.eventList | orderBy: 'date'">
-      <li>{{event.name}} <span>{{event.date.substring(0, 10)}}</span>
+      <li>
+        <a ng-click="events.zoomIn(event)">{{event.name}}</a> 
+        <span>{{event.date.substring(0, 10)}}</span>
           <ul class="task" ng-repeat="task in event.tasks">
               <li>{{task.todo}}</li>
           </ul>

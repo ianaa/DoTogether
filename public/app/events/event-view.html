@@ -1,0 +1,9 @@
+<nav-bar></nav-bar>
+<p><a href="#!/events">Back to all events</a></p>
+<div>
+  <h3>{{events.curr.name}}</h3> 
+    <span>{{events.curr.date.substring(0, 10)}}</span>
+      <ul class="task" ng-repeat="task in event.curr.tasks">
+          <li>{{task.todo}}</li>
+      </ul>
+</div>

@@ -17,6 +17,10 @@ angular.module("app", [
       controller: 'TasksController',
       authenticate: false
     })
+    .when('/zoomin', {
+      templateUrl: 'app/events/event-view.html',
+      controller: 'EventsController as events'
+    })
     .when('/signin',{
       templateUrl: 'app/auth/signin.html',
       controller: 'AuthController',
