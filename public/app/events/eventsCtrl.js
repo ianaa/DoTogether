@@ -9,8 +9,8 @@ angular.module('app.events', [])
   this.curr = EventsFactory.currentEvent;
   this.addEvent = function() {
     EventsFactory.addNew(this.new)
-    .then((res)=>{
-      this.eventList.push(res);
+    .then((data)=>{
+      this.eventList.push(data);
       this.new.name = '';
     })
   };
@@ -26,10 +26,18 @@ angular.module('app.events', [])
   };
   this.addTask = function() {
     EventsFactory.addToEvent(this.curr, this.newTask)
-    .then((res) => {
-      console.log("Response", res)
-      this.curr.tasks = res;
+    .then((data) => {
+      this.curr.tasks = data;
       this.newTask = '';
+    })
+  };
+  this.removeEvent = function(item) {
+    var index = this.eventList.indexOf(item);
+    console.log(index);
+    EventsFactory.deleteEvent(item)
+    .then((data) => {
+      console.log("removed", data)
+      this.eventList.splice(index, 1);
     })
   };
 

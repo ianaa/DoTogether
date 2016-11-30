@@ -5,7 +5,8 @@ module.exports = function (app, express){
   app.get('/api/events', eventHandler.getAllEvents);
   app.post('/api/events', eventHandler.addNewEvent);
   app.post('/api/events/add-task', eventHandler.addTaskToEvent);
-  app.get('api/events/my-tasks', function() {});
+  app.post('/api/events/remove', eventHandler.removeEvent);
+  //app.get('/api/events/my-tasks', function() {});
 }
 
 var dummyEvents = [{

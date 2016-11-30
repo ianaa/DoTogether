@@ -28,5 +28,17 @@ module.exports = {
     .catch((err) =>{
       console.error(err);
     });
+  },
+  removeEvent: function(req, res) {
+    var id = req.body._id;
+    console.log(id);
+    Event.findOneAndRemove({_id: id}).exec()
+    .then((data) =>{
+      console.log("Response from db", data);
+      res.send(data._id);
+    })
+    .catch((err) =>{
+      console.error(err);
+    });
   }
 }

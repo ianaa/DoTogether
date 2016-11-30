@@ -38,10 +38,24 @@ angular.module('app.services', [])
       console.log("ERROR", res);
     })
   };
+  var deleteEvent = function(event) {
+    return $http({
+      method: 'POST',
+      url: 'api/events/remove',
+      data: event,
+      contentType: 'application/json'
+    }).then((res) => {
+      console.log("response in the factory", res.data);
+      return res.data;
+    }, (res) => {
+      console.log("ERROR", res);
+    })
+  }
   return {
     getAll: getAll,
     addNew: addNew,
     currentEvent: currentEvent,
-    addToEvent: addToEvent
+    addToEvent: addToEvent,
+    deleteEvent: deleteEvent
   }
 })
