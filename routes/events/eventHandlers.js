@@ -19,10 +19,9 @@ module.exports = {
     var event = req.body.event;
     var task = {claimedBy: null, done: false, todo: req.body.task};
     event.tasks.push(task);
-    console.log("TASKS", event.tasks)
+    
     Event.findOneAndUpdate({_id: event._id}, {tasks: event.tasks}).exec()
     .then((data) =>{
-      //console.log("Response from db", data);
       res.send(event.tasks);
     })
     .catch((err) =>{
@@ -34,7 +33,6 @@ module.exports = {
     console.log(id);
     Event.findOneAndRemove({_id: id}).exec()
     .then((data) =>{
-      console.log("Response from db", data);
       res.send(data._id);
     })
     .catch((err) =>{

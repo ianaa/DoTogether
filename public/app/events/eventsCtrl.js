@@ -36,7 +36,6 @@ angular.module('app.events', [])
     console.log(index);
     EventsFactory.deleteEvent(item)
     .then((data) => {
-      console.log("removed", data)
       this.eventList.splice(index, 1);
     })
   };
