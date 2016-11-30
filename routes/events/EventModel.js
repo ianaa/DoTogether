@@ -6,6 +6,7 @@ var eventSchema = mongoose.Schema({
   name: String,
   date: Date,
   tasks: [],
+  participants: [],
   _id: {
     type: String,
     'default': shortid.generate

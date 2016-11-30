@@ -24,13 +24,6 @@ angular.module('app.events', [])
     EventsFactory.currentEvent = event;
     $location.path('/zoomin');
   };
-  this.addTask = function() {
-    EventsFactory.addToEvent(this.curr, this.newTask)
-    .then((data) => {
-      this.curr.tasks = data;
-      this.newTask = '';
-    })
-  };
   this.removeEvent = function(item) {
     var index = this.eventList.indexOf(item);
     console.log(index);
@@ -39,6 +32,27 @@ angular.module('app.events', [])
       this.eventList.splice(index, 1);
     })
   };
+  this.addTask = function() {
+    EventsFactory.changeTask('add', this.curr, this.newTask)
+    .then((data) => {
+      this.curr.tasks = data;
+      this.newTask = '';
+    })
+  };
+  this.removeTask = function(task) {
+    EventsFactory.changeTask('remove', this.curr, task)
+    .then((data) => {
+      console.log(data);
+      this.curr.tasks = data;
+    })
+  };
+  this.toggleDone = function(task) {
+    EventsFactory.changeTask('done', this.curr, task)
+    .then((data) => {
+      console.log(data);
+      this.curr.tasks = data;
+    })
+  }
 
   this.getEvents();
 })

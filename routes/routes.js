@@ -4,7 +4,7 @@ var eventHandler = require('./events/eventHandlers.js');
 module.exports = function (app, express){
   app.get('/api/events', eventHandler.getAllEvents);
   app.post('/api/events', eventHandler.addNewEvent);
-  app.post('/api/events/add-task', eventHandler.addTaskToEvent);
+  app.post('/api/events/edit-task', eventHandler.handleTask);
   app.post('/api/events/remove', eventHandler.removeEvent);
   //app.get('/api/events/my-tasks', function() {});
 }
@@ -15,5 +15,5 @@ var dummyEvents = [{
   tasks: [
     {done: false, claimedBy: null, todo: "bring beer"},
     {done: false, claimedBy: null, todo: "bring chips"}
-  ] 
+  ]
 }]

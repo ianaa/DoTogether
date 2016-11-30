@@ -6,7 +6,6 @@ angular.module('app.services', [])
       method: 'GET',
       url: '/api/events'
     }).then((res) => {
-      console.log(res.data);
       return res.data;
     }, (res) =>{
       console.log("ERROR", res);
@@ -19,17 +18,16 @@ angular.module('app.services', [])
       data: event,
       contentType: 'application/json'
     }).then((res) => {
-      console.log(res.data);
       return res.data;
     }, (res) =>{
       console.log("ERROR", res);
     });
   };
-  var addToEvent = function(event, task) {
+  var changeTask = function(action, event, task) {
     return $http({
       method: 'POST',
-      url: 'api/events/add-task',
-      data: {event: event, task: task},
+      url: 'api/events/edit-task',
+      data: {action: action, event: event, task: task},
       contentType: 'application/json'
     }).then((res) => {
       console.log("response in the factory", res.data);
@@ -38,6 +36,7 @@ angular.module('app.services', [])
       console.log("ERROR", res);
     })
   };
+
   var deleteEvent = function(event) {
     return $http({
       method: 'POST',
@@ -45,7 +44,6 @@ angular.module('app.services', [])
       data: event,
       contentType: 'application/json'
     }).then((res) => {
-      console.log("response in the factory", res.data);
       return res.data;
     }, (res) => {
       console.log("ERROR", res);
@@ -55,7 +53,7 @@ angular.module('app.services', [])
     getAll: getAll,
     addNew: addNew,
     currentEvent: currentEvent,
-    addToEvent: addToEvent,
+    changeTask: changeTask,
     deleteEvent: deleteEvent
   }
 })

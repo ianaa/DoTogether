@@ -13,15 +13,15 @@
   <div id="event-list">
     <ul class="event" ng-repeat="event in events.eventList | orderBy: 'date' ">
       <li>
-        <a ng-click="events.zoomIn(event)">{{event.name}}</a> 
-        <span>{{event.date.substring(0, 10)}}</span> 
+        <a ng-click="events.zoomIn(event)">{{event.name}}</a>
+        <span>{{event.date.substring(0, 10)}}</span>
         <span><button ng-click="events.removeEvent(event)">Delete</button></span>
-          <ul class="task" ng-repeat="task in event.tasks | limitTo: 3 track by $index">
+          <ul class="task" ng-repeat="task in event.tasks | filter: {done: false} | limitTo: 3 track by $index">
               <li>{{task.todo}}</li>
           </ul>
           <p ng-click="events.zoomIn(event)">...view all or add more</p>
       </li>
     </ul>
   </div>
-  
+
 </div>

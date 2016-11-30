@@ -1,17 +1,18 @@
 <nav-bar></nav-bar>
 <p><a href="#!/events">Back to all events</a></p>
 <div>
-  <h3>{{events.curr.name}}</h3> 
+  <h3>{{events.curr.name}}</h3>
     <span>{{events.curr.date.substring(0, 10)}}</span>
-    <ul  ng-repeat="task in events.curr.tasks track by $index">
+    <ul ng-repeat="task in events.curr.tasks | orderBy: 'done' track by $index">
       <li>
-      <span>{{task.todo}}</span><span><button ng-click="">X</button></span>
-      <span ng-show="task.claimedBy">{{task.claimedBy}} gonna take take of this!</span>
+      <span><input type="checkbox" ng-model="task.done" ng-checked="task.done" ng-change="events.toggleDone(task)"></span>
+      <span>{{task.todo}}</span><span><button ng-click="events.removeTask(task)">X</button></span>
+      <span ng-show="task.claimedBy">{{task.claimedBy}} gonna take care of this!</span>
       <span><button ng-hide="task.claimedBy" ng-click="">Claim</button><span>
       </li>
     </ul>
 
     <form ng-submit="events.addTask()">
-      <input type="text" ng-model="events.newTask" placeholder="...add new tasks here">
+      <input type="text" ng-model="events.newTask" placeholder="...add new tasks here" required>
     </form>
 </div>
