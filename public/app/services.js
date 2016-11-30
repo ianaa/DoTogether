@@ -25,9 +25,23 @@ angular.module('app.services', [])
       console.log("ERROR", res);
     });
   };
+  var addToEvent = function(event, task) {
+    return $http({
+      method: 'POST',
+      url: 'api/events/add-task',
+      data: {event: event, task: task},
+      contentType: 'application/json'
+    }).then((res) => {
+      console.log(res.data);
+      return res.data;
+    }, (res) => {
+      console.log("ERROR", res);
+    })
+  };
   return {
     getAll: getAll,
     addNew: addNew,
-    currentEvent: currentEvent
+    currentEvent: currentEvent,
+    addToEvent: addToEvent
   }
 })

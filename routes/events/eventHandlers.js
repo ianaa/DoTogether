@@ -16,7 +16,14 @@ module.exports = {
     })
   },
   addTaskToEvent: function(req, res) {
-    
+    var event = req.body.event;
+    var task = {claimedBy: null, done: false, todo: req.body.task};
+    console.log(task);
+    event.tasks.push(task);
+    var result;
+    Event.findOneAndUpdate({_id: event._id}, {$set: {tasks: event.tasks}}, (res) => {
+      result = res;
+    });
+    res.send(result);
   }
-
 }

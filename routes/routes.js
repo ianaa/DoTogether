@@ -4,7 +4,7 @@ var eventHandler = require('./events/eventHandlers.js');
 module.exports = function (app, express){
   app.get('/api/events', eventHandler.getAllEvents);
   app.post('/api/events', eventHandler.addNewEvent);
-  app.post('/api/events/add-task', function() {});
+  app.post('/api/events/add-task', eventHandler.addTaskToEvent);
   app.get('api/events/my-tasks', function() {});
 }
 

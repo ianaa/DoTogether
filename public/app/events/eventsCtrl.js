@@ -10,10 +10,8 @@ angular.module('app.events', [])
   this.addEvent = function() {
     EventsFactory.addNew(this.new)
     .then((res)=>{
-      var newEvent = JSON.parse(JSON.stringify(this.new));
-      this.eventList.push(newEvent);
+      this.eventList.push(res);
       this.new.name = '';
-
     })
   };
   this.getEvents = function() {
@@ -25,6 +23,14 @@ angular.module('app.events', [])
   this.zoomIn = function(event) {
     EventsFactory.currentEvent = event;
     $location.path('/zoomin');
+  };
+  this.addTask = function() {
+    console.log("called")
+    EventsFactory.addToEvent(this.curr, this.newTask)
+    .then((res) => {
+      this.curr.tasks.push(res);
+      this.newTask = '';
+    })
   };
 
   this.getEvents();
